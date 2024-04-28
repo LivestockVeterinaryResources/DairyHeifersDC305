@@ -1,1 +1,25 @@
-# DairyHeifersDC305
+# Skyview
+
+## Analysis of Heifers 
+
+### DC Commands
+
+1st lact performance Data:
+skyview_heifer
+LIST ID OLDID PEN CBRD AGE BDAT EDAT NOTE SBRD DBRD FDAT AGEFR ARDAT RPRO EVT REM DINCU DIM LACT WMK1 WMK4 WMK8 ME305 EC305 MILK TDAT SCC LGSCC LOG1 LSC2 XMAST XSICK ORGIN FOR LACT=1 FDAT>4/17/23\BL
+
+
+Arrive at KDD data:
+skyview_to_kdd
+EVENTS ID CBRD BDAT BRTHW RPRO GHDAT ARVKDD\2S1000
+
+
+Measure events
+skyview_weights
+EVENTS ID BDAT  BW8T RPRO GHDAT MEASURE\2S1000
+
+Add Disease data
+skyview_heifer_disease
+EVENTS ID BDAT LACT PNEU EARJNT NAVEL DIARHEA\2S1000
+
+Denominators
