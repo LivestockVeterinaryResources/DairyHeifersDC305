@@ -1,0 +1,168 @@
+---
+title: "Heifer Raisisng Analysis Report"
+subtitle: "Skyview"
+author: "UMN Team"
+date: "`r Sys.Date()`"
+format: 
+ pdf:
+  geometry:
+    - top=25mm
+    - bottom=25mm
+    - right=25mm
+    - left=25mm
+  colorlinks: true
+  fig-width: 7
+  fig-height: 5
+  fig-asp: 1
+execute:
+    echo: false
+    message: false
+    warning: false
+---
+
+```{r load data, message=FALSE, warning=FALSE, cache=FALSE, include=FALSE, paged.print=TRUE}
+#Setup and load data change dates and farm in this file
+source("01_heifer_import.R")
+```
+
+# Introduction
+
+This is an summary of the heifer raising data and performance of purchased and KDD heifers since heifers went to KDD
+
+## Description of animals gone to KDD
+
+@tbl-desc shows descriptive information of the calves that have gone to KDD since `r start_date` .
+
+```{r}
+#| label: tbl-desc
+#| tbl-cap: "Descriptive info of calves that went to KDD"
+
+source("02_weight_graphs.R")
+
+table_sum
+```
+
+\newpage
+
+## Growth of Heifers
+
+@fig-growth shows how calves are growing at KDD according to their breed and the disease status.
+
+<br>
+
+```{r}
+#| label: fig-growth
+#| fig-cap: "Disease does not seem to impact weights"
+
+graph_wt
+
+```
+
+\newpage
+
+## Growth Rate Table
+
+@tbl-growth show the growth rates for animals that have returned to Skyview according to their breed and disease status.
+
+```{r}
+#| label: tbl-growth
+#| tbl-cap: "Growth rates for animals that have returned to Skyview"
+
+table_wt
+
+```
+
+\newpage
+
+## Effect of Disease on Age of Return Home
+
+```{r}
+#| label: fig-diseae_age
+#| fig-cap: "Effect of Disease on age of returning to Skyview"
+
+go_home_age_graph
+
+```
+
+\newpage
+
+## Performance of Purchased vs KDD (Holstein Only)
+
+Comparison of purchased heifers vs KDD heifers is show in @fig-pur.
+This for Holsteins only has not a lot of HoJo's are milking yet.
+The higher cull rate and the 2-3 lbs difference at 4 and 8 weeks raises the question if that is enough of a difference to pay to raise more heifers at KDD.
+
+<br>
+
+```{r}
+#| label: tbl-performane
+#| tbl-cap: "Descriptive data on KDD and purchased animals that freshened at Skyview"
+
+source("03_milk_graphs.R")
+
+milk_table
+```
+
+\newpage
+
+## Milk Production
+
+@fig-pur compares average daily milk production at week 1, 4 and 8.
+
+```{r}
+#| label: fig-pur
+#| fig-cap: "KDD heifers make more milk"
+
+milk_graph_half
+```
+
+\newpage
+
+## Culling Difference between KDD and purchased animals
+
+Data is presented as survival curves and tables.
+Survival curves should be interpreted as longer the line stays close to 100% the better.
+Due to small numbers the faded out areas all overlap and indicate the uncertainty around the estimated line.
+Survival time is counted as time calving.
+
+```{r}
+#| label: fig-cull
+#| fig-cap: "KDD heifers last longer"
+
+source("04_culling.R")
+
+km
+```
+
+```{r}
+#| label: tbl-cull
+#| tbl-cap: "Probability of being culled is much higher for purchased heifers"
+
+tbl_surv1
+
+```
+
+\newpage
+
+## Impact of Disease on Milk Production
+
+For animal raised at KDD the following graph and table show impact of disease on productivity
+
+```{r}
+#| label: tbl-disease_perfomance
+#| tbl-cap: "Disease as calf does not seem to impact performance early in lactation"
+
+disease_sum_table
+```
+
+\newpage
+
+### Impact of Disease on Milk Graph
+
+```{r}
+#| label: fig-disease_milk
+#| fig-cap: "Having a disease as a calf does not impact milk"
+
+milk_disease_graph
+
+```
